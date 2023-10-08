@@ -2,14 +2,18 @@ package ru.netology;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class PhoneBook {
     private final Map<String, String> nameMap;
     private final Map<String, String> numberMap;
+    private final Set<String> nameSet;
 
     public PhoneBook() {
         this.nameMap = new HashMap<>();
         this.numberMap = new HashMap<>();
+        this.nameSet = new TreeSet<>();
     }
 
     public int getContactsQty() {
@@ -23,10 +27,10 @@ public class PhoneBook {
             if (numberMap.containsKey(number)) {
                 System.out.println("Cannot add contact with duplicate number.");
             } else {
-                System.out.println("Contact added successfully.");
                 nameMap.put(name, number);
                 numberMap.put(number, name);
-
+                nameSet.add(name);
+                System.out.println("Contact added successfully.");
             }
         }
         System.out.println("Total number of contacts is " + nameMap.size() + ".\n");
@@ -51,5 +55,9 @@ public class PhoneBook {
             System.out.println(name + " has number " + nameMap.get(name) + ".\n");
             return nameMap.get(name);
         }
+    }
+
+    public String printAllNames() {
+        return null;
     }
 }
