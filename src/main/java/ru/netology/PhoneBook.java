@@ -20,4 +20,8 @@ public class PhoneBook {
         System.out.println("Total number of contacts is " + nameMap.size() + ".\n");
         return nameMap.size();
     }
+
+    public String findByNumber(String number) {
+        return null;
+    }
 }
