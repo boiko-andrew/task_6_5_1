@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class PhoneBookTest {
     private static PhoneBook phoneBook;
 
-    @BeforeAll()
+    @BeforeAll
     public static void beforeAll() {
         phoneBook = new PhoneBook();
         phoneBook.add("James", "+7(926)311-11-14");
@@ -20,6 +20,7 @@ public class PhoneBookTest {
 
     @ParameterizedTest
     @MethodSource("parametrizedCheckAddMethodSource")
+
     public void parametrizedCheckAdd(String name, String number, int expectedQtyIncrement) {
         //arrange
         int actualQtyIncrement;
