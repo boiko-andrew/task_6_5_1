@@ -37,8 +37,12 @@ public class PhoneBook {
             return "Unknown number";
         }
         else {
-            System.out.println("Number " + number + " belongs to " + numberMap.get(number) + "\n");
+            System.out.println("Number " + number + " belongs to " + numberMap.get(number) + ".\n");
             return numberMap.get(number);
         }
+    }
+
+    public String findByName(String name) {
+        return null;
     }
 }

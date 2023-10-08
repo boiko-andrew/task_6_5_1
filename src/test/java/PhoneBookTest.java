@@ -67,4 +67,27 @@ public class PhoneBookTest {
                 Arguments.of("+7(936)333-33-60", "Unknown number")
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("parametrizedCheckFindByNameMethodSource")
+    public void parametrizedCheckFindByName(String name, String expectedNumber) {
+        //arrange
+        String actualNumber;
+
+        //act
+        actualNumber = phoneBook.findByName(name);
+
+        //assert
+        Assertions.assertEquals(expectedNumber, actualNumber);
+    }
+
+    public static Stream<Arguments> parametrizedCheckFindByNameMethodSource() {
+        return Stream.of(
+                Arguments.of("James", "+7(926)311-11-14"),
+                Arguments.of("David", "+7(999)555-55-46"),
+                Arguments.of("Danny", "+7(999)555-55-47"),
+                Arguments.of("Paul", "Unknown name"),
+                Arguments.of("Mark", "Unknown name")
+        );
+    }
 }
