@@ -11,6 +11,13 @@ public class PhoneBook {
     }
 
     public int add(String name, String number) {
-        return 0;
+        if (nameMap.containsKey(name)) {
+            System.out.println("Cannot add contact with duplicate name.");
+        } else {
+            nameMap.put(name, number);
+            System.out.println("Contact added successfully.");
+        }
+        System.out.println("Total number of contacts is " + nameMap.size() + ".\n");
+        return nameMap.size();
     }
 }
