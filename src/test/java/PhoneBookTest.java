@@ -21,8 +21,8 @@ public class PhoneBookTest {
 
     @Order(1)
     @ParameterizedTest
-    @MethodSource("parametrizedCheckAddMethodSource")
-    public void parametrizedCheckAdd(String name, String number, int expectedQtyIncrement) {
+    @MethodSource("parameterizedCheckAddMethodSource")
+    public void parameterizedCheckAdd(String name, String number, int expectedQtyIncrement) {
         //arrange
         int actualQtyIncrement;
         int qtyBefore;
@@ -37,20 +37,22 @@ public class PhoneBookTest {
         Assertions.assertEquals(expectedQtyIncrement, actualQtyIncrement);
     }
 
-    public static Stream<Arguments> parametrizedCheckAddMethodSource() {
+    public static Stream<Arguments> parameterizedCheckAddMethodSource() {
         return Stream.of(
                 Arguments.of("Thomas", "+7(926)322-15-62", 1),
                 Arguments.of("William", "+7(936)283-82-82", 1),
                 Arguments.of("Sophie", "+7(926)111-11-89", 1),
                 Arguments.of("Thomas", "+7(936)283-82-82", 0),
-                Arguments.of("William", "+7(926)111-11-89", 0)
+                Arguments.of("William", "+7(926)111-11-89", 0),
+                Arguments.of("Alex", "+7(926)322-15-62", 0),
+                Arguments.of("Matt", "+7(936)283-82-82", 0)
         );
     }
 
     @Order(2)
     @ParameterizedTest
-    @MethodSource("parametrizedCheckFindByNumberMethodSource")
-    public void parametrizedCheckFindByNumber(String number, String expectedName) {
+    @MethodSource("parameterizedCheckFindByNumberMethodSource")
+    public void parameterizedCheckFindByNumber(String number, String expectedName) {
         //arrange
         String actualName;
 
@@ -61,7 +63,7 @@ public class PhoneBookTest {
         Assertions.assertEquals(expectedName, actualName);
     }
 
-    public static Stream<Arguments> parametrizedCheckFindByNumberMethodSource() {
+    public static Stream<Arguments> parameterizedCheckFindByNumberMethodSource() {
         return Stream.of(
                 Arguments.of("+7(926)311-11-14", "James"),
                 Arguments.of("+7(999)555-55-46", "David"),
@@ -73,8 +75,8 @@ public class PhoneBookTest {
 
     @Order(3)
     @ParameterizedTest
-    @MethodSource("parametrizedCheckFindByNameMethodSource")
-    public void parametrizedCheckFindByName(String name, String expectedNumber) {
+    @MethodSource("parameterizedCheckFindByNameMethodSource")
+    public void parameterizedCheckFindByName(String name, String expectedNumber) {
         //arrange
         String actualNumber;
 
@@ -85,7 +87,7 @@ public class PhoneBookTest {
         Assertions.assertEquals(expectedNumber, actualNumber);
     }
 
-    public static Stream<Arguments> parametrizedCheckFindByNameMethodSource() {
+    public static Stream<Arguments> parameterizedCheckFindByNameMethodSource() {
         return Stream.of(
                 Arguments.of("James", "+7(926)311-11-14"),
                 Arguments.of("David", "+7(999)555-55-46"),
@@ -104,7 +106,7 @@ public class PhoneBookTest {
 
         //act
         actualOutput = phoneBook.printAllNames();
-        System.out.println(actualOutput);
+        System.out.println(actualOutput + ".\n");
 
         //assert
         Assertions.assertEquals(expectedOutput, actualOutput);
